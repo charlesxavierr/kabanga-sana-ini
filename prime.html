@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proudo</title>
+</head>
+<body>
+    <form id="form">
+        <label for="num">Input a number:</label>
+        <input type="number" id="num" name="num" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var num = parseInt(document.getElementById('num').value);
+            var result = document.getElementById('result');
+
+            if (isPrime(num)) {
+                result.innerHTML = num + ' is a prime number.';
+            } else {
+                result.innerHTML = num + ' is not a prime number.';
+            }
+            function isPrime(num) {
+                if (num <= 1) {
+                    return false;
+                }
+                for (var i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>
